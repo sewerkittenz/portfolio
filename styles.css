@@ -1,0 +1,98 @@
+/* Basic Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FAD1D1;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    text-align: center;
+}
+
+/* Profile */
+.pfp-container img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
+.banner {
+    background-color: #F79C42;
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+#date {
+    font-size: 16px;
+}
+
+/* Bio */
+.bio p {
+    font-size: 18px;
+    color: #F78C9D;
+}
+
+/* Social Media Icons */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Music */
+.music-player {
+    margin-top: 20px;
+}
+
+#mute-button {
+    background-color: #F79C42;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Categories */
+.categories {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.category {
+    background-color: #F79C42;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.category h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.category a {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.category a:hover {
+    text-decoration: underline;
+}

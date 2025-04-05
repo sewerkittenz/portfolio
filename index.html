@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Twee/ Shibuya Kei Site</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile">
+            <div class="pfp-container">
+                <img src="assets/images/pfp.jpg" alt="Profile Picture" id="pfp">
+            </div>
+            <div class="banner" id="banner">
+                <div id="date"></div>
+            </div>
+            <div class="bio">
+                <p id="bio-text">Example bio: I'm a creative soul who loves coding, art, and music!</p>
+            </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-media">
+            <a href="https://discord.com" class="social-icon" id="discord">
+                <img src="assets/images/discord-logo.png" alt="Discord">
+            </a>
+            <a href="https://spotify.com" class="social-icon">
+                <img src="assets/images/spotify-logo.png" alt="Spotify">
+            </a>
+            <a href="https://twitter.com" class="social-icon">
+                <img src="assets/images/twitter-logo.png" alt="Twitter">
+            </a>
+            <a href="https://youtube.com" class="social-icon">
+                <img src="assets/images/youtube-logo.png" alt="YouTube">
+            </a>
+            <a href="https://tiktok.com" class="social-icon">
+                <img src="assets/images/tiktok-logo.png" alt="TikTok">
+            </a>
+        </div>
+
+        <!-- Music Player -->
+        <div class="music-player">
+            <audio id="music" autoplay loop>
+                <source src="assets/music/background-music.mp3" type="audio/mp3">
+            </audio>
+            <button id="mute-button">Mute</button>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories">
+            <div class="category" id="coding-projects">
+                <h2>Coding Projects</h2>
+                <a href="assets/files/project1.html">Project 1</a>
+            </div>
+            <div class="category" id="art">
+                <h2>Art</h2>
+                <a href="assets/images/art1.png" target="_blank">Art 1</a>
+            </div>
+            <div class="category" id="stories">
+                <h2>Stories</h2>
+                <a href="assets/files/story1.docx" target="_blank">Story 1</a>
+            </div>
+            <div class="category" id="music">
+                <h2>Music</h2>
+                <a href="assets/music/music1.mp3" target="_blank">Track 1</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
