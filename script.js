@@ -1,58 +1,116 @@
-// Dynamic banner color and date display
-function updateBanner() {
-    const date = new Date();
-    const hue = (date.getHours() * 15) % 360;
-    document.getElementById('banner').style.backgroundColor = `hsl(${hue}, 70%, 85%)`;
-    document.getElementById('date').innerHTML = 
-        date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + 
-        '<br>' + 
-        date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+// Particle Network Generation
+function generateParticles() {
+    const container = document.getElementById('particleField');
+    const particleCount = Math.floor(window.innerWidth / 10);
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = `${Math.random() * 15 + 5}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particle.style.opacity = Math.random() * 0.4;
+        container.appendChild(particle);
+    }
 }
 
-// Music controls
-const audio = document.getElementById('bg-music');
-audio.volume = 0.3;
-
-function toggleMusic() {
-    audio.muted = !audio.muted;
-    const button = document.querySelector('.music-player button');
-    button.textContent = audio.muted ? '🔇 Unmute' : '🎵 Mute';
+// Temporal Display System
+function updateChrono() {
+    const now = new Date();
+    const options = { 
+        weekday: 'long', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    };
+    
+    document.getElementById('chronoDisplay').innerHTML = `
+        ${now.toLocaleDateString('en-US', options)}<br>
+        ${now.toLocaleTimeString('en-US', options)}
+    `;
 }
 
-// Discord username copy
+// Audio Matrix Control
+const cyberAudio = document.getElementById('cyberJams');
+cyberAudio.volume = 0.4;
+
+function toggleCyberJams() {
+    cyberAudio.muted = !cyberAudio.muted;
+    const button = document.querySelector('.cyber-button');
+    button.textContent = cyberAudio.muted ? '♫ Unmute Matrix' : '♫ Tune Matrix';
+    button.style.transform = 'skewX(-5deg) scale(1.1)';
+    setTimeout(() => button.style.transform = '', 300);
+}
+
+// Discord Alchemy
 function copyDiscord() {
-    navigator.clipboard.writeText('PastelDev#1234')
+    navigator.clipboard.writeText('conjoinedpenis')
         .then(() => {
             const toast = document.createElement('div');
             toast.textContent = '🎀 Username copied to clipboard!';
-            toast.style.position = 'fixed';
-            toast.style.bottom = '20px';
-            toast.style.left = '50%';
-            toast.style.transform = 'translateX(-50%)';
-            toast.style.background = 'white';
-            toast.style.padding = '10px 20px';
-            toast.style.borderRadius = '20px';
-            toast.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            toast.className = 'cyber-toast';
             document.body.appendChild(toast);
             
-            setTimeout(() => toast.remove(), 2000);
+            setTimeout(() => {
+                toast.style.transform = 'translateY(100px)';
+                setTimeout(() => toast.remove(), 500);
+            }, 2000);
         });
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    setInterval(updateBanner, 1000);
-    document.addEventListener('click', () => {
-        audio.play().catch(() => { /* Handle autoplay restrictions */ });
-    }, { once: true });
+// Particle Explosion Effect
+function createParticleExplosion(x, y) {
+    const explosion = document.createElement('div');
+    explosion.className = 'particle-explosion';
+    explosion.style.left = `${x}px`;
+    explosion.style.top = `${y}px`;
     
-    // Add hover effects dynamically
-    document.querySelectorAll('.social-icon').forEach(icon => {
-        icon.addEventListener('mouseenter', () => {
-            icon.style.transform = 'scale(1.2) rotate(5deg)';
-        });
-        icon.addEventListener('mouseleave', () => {
-            icon.style.transform = 'scale(1)';
+    for (let i = 0; i < 20; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'particle-spark';
+        spark.style.transform = `rotate(${Math.random() * 360}deg)`;
+        spark.style.animationDelay = `${Math.random() * 0.5}s`;
+        explosion.appendChild(spark);
+    }
+    
+    document.body.appendChild(explosion);
+    setTimeout(() => explosion.remove(), 1000);
+}
+
+// Interactive Initiation
+document.addEventListener('DOMContentLoaded', () => {
+    generateParticles();
+    setInterval(updateChrono, 1000);
+    updateChrono();
+
+    // Audio Activation Protocol
+    document.addEventListener('click', () => {
+        cyberAudio.play().catch(console.error);
+    }, { once: true });
+
+    // Social Orb Interactions
+    document.querySelectorAll('.social-orb').forEach(orb => {
+        orb.addEventListener('click', (e) => {
+            createParticleExplosion(e.clientX, e.clientY);
+            orb.style.transform = 'scale(0.9)';
+            setTimeout(() => orb.style.transform = '', 200);
         });
     });
+
+    // Holographic Hover Effects
+    const hologram = document.querySelector('.hologram-pfp');
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        hologram.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+    });
+});
+
+// Responsive Reconfiguration
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.particle').forEach(p => p.remove());
+    generateParticles();
 });
