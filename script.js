@@ -1,80 +1,58 @@
-// script.js
+// Dynamic banner color and date display
+function updateBanner() {
+    const date = new Date();
+    const hue = (date.getHours() * 15) % 360;
+    document.getElementById('banner').style.backgroundColor = `hsl(${hue}, 70%, 85%)`;
+    document.getElementById('date').innerHTML = 
+        date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + 
+        '<br>' + 
+        date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+}
+
+// Music controls
+const audio = document.getElementById('bg-music');
+audio.volume = 0.3;
+
+function toggleMusic() {
+    audio.muted = !audio.muted;
+    const button = document.querySelector('.music-player button');
+    button.textContent = audio.muted ? '🔇 Unmute' : '🎵 Mute';
+}
+
+// Discord username copy
+function copyDiscord() {
+    navigator.clipboard.writeText('PastelDev#1234')
+        .then(() => {
+            const toast = document.createElement('div');
+            toast.textContent = '🎀 Username copied to clipboard!';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.background = 'white';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = '20px';
+            toast.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 2000);
+        });
+}
+
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Interactive background elements
-    createFloatingHearts();
-    createFollowingStars();
-    initRainbowCursor();
-    setupMascotInteraction();
-    addClickSparkles();
-    setupSqueakyButtons();
-    initBGMControls();
-    createBounceEffects();
+    setInterval(updateBanner, 1000);
+    document.addEventListener('click', () => {
+        audio.play().catch(() => { /* Handle autoplay restrictions */ });
+    }, { once: true });
+    
+    // Add hover effects dynamically
+    document.querySelectorAll('.social-icon').forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'scale(1.2) rotate(5deg)';
+        });
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = 'scale(1)';
+        });
+    });
 });
-
-function createFloatingHearts() {
-    const container = document.querySelector('.bouncing-hearts');
-    for(let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = `${Math.random() * 100}%`;
-        heart.style.animation = `float ${5 + Math.random() * 5}s infinite`;
-        heart.innerHTML = '💖';
-        container.appendChild(heart);
-    }
-}
-
-function setupMascotInteraction() {
-    const mascot = document.getElementById('mascot');
-    let isDragging = false;
-    
-    mascot.addEventListener('mousedown', () => {
-        isDragging = true;
-        mascot.style.transform = 'scale(0.9)';
-        playSound('pop');
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if(isDragging) {
-            mascot.style.left = `${e.clientX - 100}px`;
-            mascot.style.top = `${e.clientY - 100}px`;
-            createSparkles(e.clientX, e.clientY);
-        }
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        mascot.style.transform = '';
-    });
-}
-
-function addClickSparkles() {
-    document.addEventListener('click', (e) => {
-        createBurstEffect(e.clientX, e.clientY);
-        playSound('click');
-        animateButtonPress(e.target);
-    });
-}
-
-function createBurstEffect(x, y) {
-    const burst = document.createElement('div');
-    burst.className = 'burst-effect';
-    burst.style.left = `${x}px`;
-    burst.style.top = `${y}px`;
-    burst.innerHTML = Array(10).fill('✨').join('');
-    document.body.appendChild(burst);
-    
-    setTimeout(() => burst.remove(), 1000);
-}
-
-function initRainbowCursor() {
-    document.addEventListener('mousemove', (e) => {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        trail.style.left = `${e.clientX}px`;
-        trail.style.top = `${e.clientY}px`;
-        trail.style.background = `hsl(${Date.now()/10 % 360},100%,70%)`;
-        document.body.appendChild(trail);
-        
-        setTimeout(() => trail.remove(), 500);
-    });
-}

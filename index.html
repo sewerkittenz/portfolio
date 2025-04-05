@@ -1,50 +1,197 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script defer src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🐇🌸 Kawaii Portal 🍄🌟</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>✧･ﾟ: *✧･ﾟ:* PINK TWEE SPACE *:･ﾟ✧*:･ﾟ✧</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --main-pink: #ffb3c6;
+            --accent-pink: #ff8fab;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(-45deg, #ffb3c6, #ffc2d1, #ffe5ec, #ffffff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--text-color);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-section {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .banner {
+            background-color: #${bannerColor};
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: -50px;
+            position: relative;
+        }
+
+        .date-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+
+        .pfp {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            position: relative;
+        }
+
+        .bio {
+            max-width: 500px;
+            margin: 1rem auto;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: var(--accent-pink);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div class="kawaii-bg">
-        <div class="floating-clouds"></div>
-        <div class="sparkle-field"></div>
-        <div class="bouncing-hearts"></div>
+    <div class="profile-section">
+        <div class="banner" id="banner">
+            <div class="date-overlay" id="date"></div>
+            <img src="assets/pfp.png" alt="Profile" class="pfp">
+        </div>
+        <div class="bio">
+            ✧･ﾟ: *✧･ﾟ:* kawaii developer & creative *:･ﾟ✧*:･ﾟ✧<br>
+            ✨ currently obsessed with: pink things & shibuya kei ✨
+        </div>
     </div>
-    
-    <div class="main-frame">
-        <div class="mascot" id="mascot"></div>
-        
-        <div class="profile-san">
-            <div class="pfp-frame">
-                <img src="https://github.com/yourusername/assets/raw/main/pfp.png" class="nyapfp">
-                <div class="ears"></div>
-                <div class="blush"></div>
-                <div class="paw-cursor"></div>
+
+    <div class="social-icons">
+        <i class="fab fa-discord social-icon" onclick="copyDiscord()"></i>
+        <a href="https://spotify.com" target="_blank"><i class="fab fa-spotify social-icon"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter social-icon"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube social-icon"></i></a>
+        <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok social-icon"></i></a>
+    </div>
+
+    <div class="categories">
+        <div class="category-box">
+            <h2>🎨 Art</h2>
+            <div class="art-grid">
+                <!-- Add your art files -->
+                <img src="assets/art1.png" alt="Artwork" style="width: 100px;">
             </div>
-            <h1 class="nameplate">
-                <span class="name">sugarplum</span>
-                <div class="name-underline"></div>
-            </h1>
         </div>
-
-        <div class="social-bento">
-            <!-- Social links with custom icons -->
+        
+        <div class="category-box">
+            <h2>💻 Code Projects</h2>
+            <!-- Add project links -->
+            <a href="project1.html">🌸 Super Kawaii App</a>
         </div>
-
-        <div class="kawaii-nav">
-            <!-- Category buttons with emoji animations -->
+        
+        <div class="category-box">
+            <h2>📚 Stories</h2>
+            <!-- Add story files -->
+            <a href="assets/story1.pdf">My Cute Story.pdf</a>
+        </div>
+        
+        <div class="category-box">
+            <h2>🎵 Music</h2>
+            <!-- Add music files -->
+            <audio controls>
+                <source src="assets/song1.mp3" type="audio/mpeg">
+            </audio>
         </div>
     </div>
 
-    <audio id="bgm" loop src="https://github.com/yourusername/assets/raw/main/bgm.mp3"></audio>
-    <audio id="click-sfx" src="https://github.com/yourusername/assets/raw/main/click.wav"></audio>
+    <div class="music-player">
+        <audio id="bg-music" loop>
+            <source src="assets/bgm.mp3" type="audio/mpeg">
+        </audio>
+        <button onclick="toggleMusic()">🎵 Toggle Music</button>
+    </div>
 
-    <div class="snackbar">Click anywhere for Nyan~! 🐾</div>
+    <script>
+        // Dynamic banner color based on time
+        function updateBanner() {
+            const date = new Date();
+            const hue = (date.getHours() * 15) % 360;
+            document.getElementById('banner').style.backgroundColor = `hsl(${hue}, 70%, 85%)`;
+            document.getElementById('date').innerHTML = date.toLocaleDateString() + '<br>' + date.toLocaleTimeString();
+        }
+        setInterval(updateBanner, 1000);
 
-    <script src="script.js"></script>
+        // Music control
+        const audio = document.getElementById('bg-music');
+        audio.volume = 0.3;
+        function toggleMusic() { audio.muted = !audio.muted; }
+
+        // Copy Discord username
+        function copyDiscord() {
+            navigator.clipboard.writeText('YourDiscord#1234');
+            alert('Discord username copied! 🎀');
+        }
+
+        // Auto-start music after user interaction
+        document.addEventListener('click', () => {
+            audio.play();
+        }, { once: true });
+    </script>
 </body>
 </html>
